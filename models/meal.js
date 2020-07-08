@@ -1,11 +1,9 @@
-import MealDetailScreen from "../screens/MealDetailScreen";
-
 class Meal {
 	constructor(
 		id,
 		categoryId,
 		title,
-		affordablity,
+		affordability,
 		complexity,
 		imageUrl,
 		duration,
@@ -19,7 +17,7 @@ class Meal {
 		this.id = id;
 		this.categoryId = categoryId;
 		this.title = title;
-		this.affordablity = affordablity;
+		this.affordability = affordability;
 		this.complexity = complexity;
 		this.imageUrl = imageUrl;
 		this.duration = duration;

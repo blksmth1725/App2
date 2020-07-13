@@ -15,6 +15,12 @@ import Colors from "../constant/Colors";
 
 const defaultStasckNavOption = {
   headerTintColor: Colors.darkVioletColor,
+  headerTitleStyle: {
+    fontFamily: "open-sans",
+  },
+  headerBackTitleStyle: {
+    fontFamily: "open-sans",
+  },
 };
 
 const MealsNavigator = createStackNavigator(
@@ -72,7 +78,8 @@ const MealsFavTabNavigator = createBottomTabNavigator(
   },
   {
     tabBarOptions: {
-      activeTintColor: Colors.liteYellowColor,
+      activeTintColor: Colors.darkVioletColor,
+      labelStyle: { fontFamily: "open-sans-bold" },
     },
   },
 );
@@ -91,7 +98,14 @@ const MainNavigator = createDrawerNavigator(
     },
     Filters: FiltersNavigator,
   },
-  {},
+  {
+    contentOptions: {
+      activeTintColor: Colors.darkVioletColor,
+      labelStyle: {
+        fontFamily: "open-sans-bold",
+      },
+    },
+  },
 );
 
 export default createAppContainer(MainNavigator);

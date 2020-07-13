@@ -5,19 +5,48 @@ import { Item, HeaderButtons } from "react-navigation-header-buttons";
 import HeaderButton from "../components/HeaderButton";
 import Colors from "../constant/Colors";
 
+const FilterSwith = (props) => {
+  return (
+    <View style={styles.filterContainer}>
+      <Text>{props.label}</Text>
+      <Switch
+        trackColor={{ true: Colors.ZimaBlue }}
+        value={props.state}
+        onValueChange={props.onChange}
+      />
+    </View>
+  );
+};
+
 const FliterScreen = (props) => {
   const [isGLutenFree, setIsGlutenFree] = useState(false);
+  const [isLactosefree, setIsLactoseFree] = useState(false);
+  const [isVegan, setIsVegan] = useState(false);
+  const [isVegetarian, setIsVegetarian] = useState(false);
+
   return (
     <View style={styles.screen}>
       <Text style={styles.title}>Available Filters / Restrictions</Text>
-      <View style={styles.filterContainer}>
-        <Text>Gluten-Free</Text>
-        <Switch
-          trackColor={{ true: Colors.ZimaBlue }}
-          value={isGLutenFree}
-          onValueChange={(newValue) => setIsGlutenFree(newValue)}
-        />
-      </View>
+      <FilterSwith
+        label="Gluten-Free"
+        state={isGLutenFree}
+        onChange={(newValue) => setIsGlutenFree(newValue)}
+      />
+      <FilterSwith
+        label="Lactose-Free"
+        state={isLactosefree}
+        onChange={(newValue) => setIsLactoseFree(newValue)}
+      />
+      <FilterSwith
+        label="Vegan"
+        state={isVegan}
+        onChange={(newValue) => setIsVegan(newValue)}
+      />
+      <FilterSwith
+        label="Vegetarian "
+        state={isVegetarian}
+        onChange={(newValue) => setIsVegetarian(newValue)}
+      />
     </View>
   );
 };
@@ -49,6 +78,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     width: "80%",
+    marginVertical: 16,
   },
   title: {
     fontFamily: "open-sans",

@@ -5,14 +5,14 @@ import { Ionicons } from "@expo/vector-icons";
 import Colors from "../constant/Colors";
 
 const CustomHeaderButton = (props) => {
-	return (
-		<HeaderButton
-			{...props}
-			IconComponent={Ionicons}
-			iconSize={23}
-			color={Colors.liteYellowColor}
-		/>
-	);
+  return (
+    <HeaderButton
+      {...props}
+      IconComponent={Ionicons}
+      iconSize={25}
+      color={Colors.darkVioletColor}
+    />
+  );
 };
 
 export default CustomHeaderButton;

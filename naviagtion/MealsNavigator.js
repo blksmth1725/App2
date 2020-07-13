@@ -12,11 +12,12 @@ import MealDetailScreen from "../screens/MealDetailScreen";
 import FavoritesScreen from "../screens/FavoritesScreen";
 
 import Colors from "../constant/Colors";
+import FliterScreen from "../screens/FilterScreen";
 
 const defaultStasckNavOption = {
   headerTintColor: Colors.darkVioletColor,
   headerTitleStyle: {
-    fontFamily: "open-sans",
+    fontFamily: "open-sans-bold",
   },
   headerBackTitleStyle: {
     fontFamily: "open-sans",
@@ -84,9 +85,14 @@ const MealsFavTabNavigator = createBottomTabNavigator(
   },
 );
 
-const FiltersNavigator = createStackNavigator({
-  Filters: FilterScreen,
-});
+const FiltersNavigator = createStackNavigator(
+  {
+    Filters: FilterScreen,
+  },
+  {
+    defaultNavigationOptions: defaultStasckNavOption,
+  },
+);
 
 const MainNavigator = createDrawerNavigator(
   {

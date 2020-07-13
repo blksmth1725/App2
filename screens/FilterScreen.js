@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { View, Text, StyleSheet, Switch } from "react-native";
 import { Item, HeaderButtons } from "react-navigation-header-buttons";
 
@@ -19,10 +19,27 @@ const FilterSwith = (props) => {
 };
 
 const FliterScreen = (props) => {
+  const { navigation } = props;
+
   const [isGLutenFree, setIsGlutenFree] = useState(false);
   const [isLactosefree, setIsLactoseFree] = useState(false);
   const [isVegan, setIsVegan] = useState(false);
   const [isVegetarian, setIsVegetarian] = useState(false);
+
+  const saveFilters = useCallback(() => {
+    const appliedFilters = {
+      glutenFree: isGLutenFree,
+      lactoseFree: isLactosefree,
+      vagan: isVegan,
+      Vegetarian: isVegetarian,
+    };
+
+    console.log(appliedFilters);
+  }, [isVegetarian, isGLutenFree, isLactosefree, isVegan]);
+
+  useEffect(() => {
+    navigation.setParams({ save: saveFilters });
+  }, [saveFilters]);
 
   return (
     <View style={styles.screen}>
@@ -62,6 +79,15 @@ FliterScreen.navigationOptions = (navData) => {
           onPress={() => {
             navData.navigation.toggleDrawer();
           }}
+        />
+      </HeaderButtons>
+    ),
+    headerRight: (
+      <HeaderButtons HeaderButtonComponent={HeaderButton}>
+        <Item
+          title="Save"
+          iconName="ios-save"
+          onPress={navData.navigation.getParam("save")}
         />
       </HeaderButtons>
     ),

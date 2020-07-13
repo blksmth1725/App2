@@ -12,7 +12,6 @@ import MealDetailScreen from "../screens/MealDetailScreen";
 import FavoritesScreen from "../screens/FavoritesScreen";
 
 import Colors from "../constant/Colors";
-import FliterScreen from "../screens/FilterScreen";
 
 const defaultStasckNavOption = {
   headerTintColor: Colors.darkVioletColor,
@@ -79,12 +78,17 @@ const MealsFavTabNavigator = createBottomTabNavigator(
 );
 
 const FiltersNavigator = createStackNavigator({
-  Filters: FliterScreen,
+  Filters: FilterScreen,
 });
 
 const MainNavigator = createDrawerNavigator(
   {
-    MealsFavs: MealsFavTabNavigator,
+    MealsFavs: {
+      screen: MealsFavTabNavigator,
+      navigationOptions: {
+        drawerLabel: "Meals",
+      },
+    },
     Filters: FiltersNavigator,
   },
   {},
